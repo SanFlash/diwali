@@ -11,20 +11,20 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string | undefined
 const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined
 const supabase = supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null
 const DB_NAME = 'arrow-arena-local'
-const DB_STORE = 'records'
+const DB_STORE = 'records'\nconst PLAYER_STORE = 'players'
 
 function openLocalDb(): Promise<IDBDatabase | null> {
   return new Promise(resolve => {
     if (!('indexedDB' in window)) return resolve(null)
     const request = indexedDB.open(DB_NAME, 1)
     request.onupgradeneeded = () => {
-      if (!request.result.objectStoreNames.contains(DB_STORE)) request.result.createObjectStore(DB_STORE, { keyPath: 'id' })
+      if (!request.result.objectStoreNames.contains(DB_STORE)) request.result.createObjectStore(DB_STORE, { keyPath: 'id' })\n      if (!request.result.objectStoreNames.contains(PLAYER_STORE)) request.result.createObjectStore(PLAYER_STORE, { keyPath: 'id' })
     }
     request.onsuccess = () => resolve(request.result)
     request.onerror = () => resolve(null)
   })
 }
-async function saveRecord(record: LocalRecord) {
+async function savePlayer(player: { id: string; name: string; lastSeen: string }) {\n  const db = await openLocalDb()\n  if (!db) return\n  const tx = db.transaction(PLAYER_STORE, 'readwrite')\n  tx.objectStore(PLAYER_STORE).put(player)\n  tx.oncomplete = () => db.close()\n}\nasync function saveRecord(record: LocalRecord) {
   const db = await openLocalDb()
   if (!db) return
   const tx = db.transaction(DB_STORE, 'readwrite')
