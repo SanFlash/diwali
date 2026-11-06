@@ -17,7 +17,7 @@
 
 /* IMMERSIVE FESTIVAL EXPERIENCE */
 .app-shell{position:relative;isolation:isolate}
-.app-shell> :not(.festival-universe):not(.ambient-grain){position:relative;z-index:1}
+.route-transition{position:relative;z-index:1}
 .festival-universe{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;opacity:.76}
 .festival-universe canvas{display:block;width:100%;height:100%}
 .experience-progress{position:fixed;z-index:60;top:0;left:0;width:100%;height:3px;transform:scaleX(0);transform-origin:left center;background:linear-gradient(90deg,#e76c3c,#f2c56e,#8e7bd8,#63c5c0);box-shadow:0 0 16px rgba(242,197,110,.7);pointer-events:none}
