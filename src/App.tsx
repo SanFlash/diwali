@@ -5,6 +5,8 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useLocation } from 'react-router-dom'
+import FestivalUniverse from './components/FestivalUniverse'
+import ExperienceFX from './components/ExperienceFX'
 import Shell from './components/Shell'
 import Home from './pages/Home'
 import Story from './pages/Story'
@@ -55,5 +57,5 @@ export default function App(){
     } catch { /* Audio is an optional enhancement; visual experience remains complete. */ }
     return()=>{void ctx?.close()}
   },[sound])
-  return <div className="app-shell"><div className="ambient-grain"/><AnimatedRoutes sound={sound} setSound={setSound}/></div>
+  return <div className="app-shell"><FestivalUniverse/><ExperienceFX/><div className="ambient-grain"/><AnimatedRoutes sound={sound} setSound={setSound}/></div>
 }

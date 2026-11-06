@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { ArrowDown, ArrowRight, Sparkles, Sun, HeartHandshake, Lightbulb } from 'lucide-react'
 import { gsap } from 'gsap'
 import Diya from '../components/Diya'
+import FestivalShowcase from '../components/FestivalShowcase'
 export default function Home(){
  const hero=useRef<HTMLElement>(null)
  useEffect(()=>{if(!hero.current||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;const ctx=gsap.context(()=>{const tl=gsap.timeline({defaults:{ease:'power3.out'}});tl.from('.hero-kicker',{y:18,opacity:0,duration:.7}).from('.hero-title .line',{y:90,opacity:0,rotateX:-35,stagger:.13,duration:1.1},'-=.3').from('.hero-copy,.hero-actions',{y:22,opacity:0,duration:.8,stagger:.15},'-=.45').from('.hero-diya',{scale:.75,opacity:0,duration:1.2},'-=1').from('.hero-orbit',{scale:.65,opacity:0,duration:1.3},'-=1')},hero);return()=>ctx.revert()},[])
@@ -30,6 +31,7 @@ export default function Home(){
    <div className="brand-message-art"><div className="mandala mandala-small"/><div className="mini-diya">✦</div></div>
    <div className="brand-message-copy"><span className="eyebrow">A NOTE FROM AM WEBTECH</span><h2 className="display">Progress is brighter <em>when we shine together.</em></h2><p>To our colleagues, clients, partners and friends — thank you for being part of our journey. May the season bring renewed energy, meaningful connections and success worth sharing.</p><Link to="/story" className="text-link">Discover the Diwali story <ArrowRight size={16}/></Link></div>
   </section>
+  <FestivalShowcase/>
   <section className="home-cta section-pad"><span className="eyebrow">MAKE THIS MOMENT YOURS</span><h2 className="display">Ready to add a little <em>more light?</em></h2><p>Light a diya, create a wish and send a little Diwali magic into the world.</p><Link to="/celebrate" className="button button-gold">Celebrate with us <Sparkles size={16}/></Link></section>
  </div>
 }
