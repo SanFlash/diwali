@@ -47,3 +47,20 @@ The header and footer use the official AM Webtech logo from the existing public 
 - The fireworks and rangoli are drawn on canvas.
 - Reduced-motion preferences are respected.
 - Greeting download is generated locally in the browser.
+
+
+## Arrow Arena multiplayer setup
+
+Arrow Arena includes a live 1-vs-1 lobby powered by Supabase Realtime Presence and Broadcast. A browser-local IndexedDB store keeps the last five match results on that device.
+
+1. Create a Supabase project.
+2. Copy `.env.example` to `.env.local`.
+3. Set `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` using the project's URL and anon/public key.
+4. In Supabase, enable Realtime for your project. The app uses private, ephemeral Realtime channels for lobby presence and duel events; it does not require a database table.
+5. Add the same two variables in Vercel → Project Settings → Environment Variables, then redeploy.
+
+Never put a Supabase service-role key in a Vite/browser environment variable. The anon/public key is intended for browser use.
+
+Without these environment variables, the page remains usable in local practice mode. A local IndexedDB database is per-browser and cannot connect visitors on different devices; cross-device matchmaking requires the shared Supabase Realtime service.
+
+**Security note:** this is a casual festival mini-game. Duel events are client-broadcast for responsiveness and are not server-authoritative; do not use this implementation for ranked play, prizes, or anything requiring cheat-resistant scoring.
