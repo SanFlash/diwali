@@ -16,7 +16,7 @@ const DB_STORE = 'records'\nconst PLAYER_STORE = 'players'
 function openLocalDb(): Promise<IDBDatabase | null> {
   return new Promise(resolve => {
     if (!('indexedDB' in window)) return resolve(null)
-    const request = indexedDB.open(DB_NAME, 1)
+    const request = indexedDB.open(DB_NAME, 2)
     request.onupgradeneeded = () => {
       if (!request.result.objectStoreNames.contains(DB_STORE)) request.result.createObjectStore(DB_STORE, { keyPath: 'id' })\n      if (!request.result.objectStoreNames.contains(PLAYER_STORE)) request.result.createObjectStore(PLAYER_STORE, { keyPath: 'id' })
     }
