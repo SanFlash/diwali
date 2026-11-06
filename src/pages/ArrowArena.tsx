@@ -7,8 +7,9 @@ type Fighter = { id: string; name: string; x: number; y: number; facing: 'left' 
 type MatchEvent = { type: 'move' | 'shot' | 'rematch' | 'leave'; playerId: string; x?: number; y?: number; facing?: 'left' | 'right'; shotId?: string }
 type LocalRecord = { id: string; opponent: string; result: string; date: string }
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string | undefined
-const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined
+const viteEnv = (import.meta as ImportMeta & { env?: Record<string, string | undefined> }).env ?? {}
+const supabaseUrl = viteEnv.VITE_SUPABASE_URL
+const supabaseKey = viteEnv.VITE_SUPABASE_ANON_KEY
 const supabase = supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null
 const DB_NAME = 'arrow-arena-local'
 const DB_STORE = 'records'
