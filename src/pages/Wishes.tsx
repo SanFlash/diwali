@@ -1,0 +1,16 @@
+import { useMemo, useState } from 'react'
+import { Copy, Check, Share2, Download, Sparkles } from 'lucide-react'
+import { wishes,categories } from '../data/wishes'
+import PageIntro from '../components/PageIntro'
+function downloadCard(title:string,message:string){const c=document.createElement('canvas');c.width=1200;c.height=1500;const x=c.getContext('2d');if(!x)return;const g=x.createLinearGradient(0,0,1200,1500);g.addColorStop(0,'#15152d');g.addColorStop(.55,'#31172d');g.addColorStop(1,'#080b1c');x.fillStyle=g;x.fillRect(0,0,1200,1500);x.strokeStyle='rgba(226,183,105,.7)';x.lineWidth=3;x.strokeRect(55,55,1090,1390);x.textAlign='center';x.fillStyle='#e8c78c';x.font='28px Arial';x.fillText('AM WEBTECH  •  WISHES YOU',600,170);x.fillStyle='#f8e7bd';x.font='bold 76px Georgia';x.fillText('Happy Diwali',600,470);x.fillStyle='#d9b16b';x.font='42px Georgia';x.fillText(title,600,620);x.fillStyle='#fff5df';x.font='32px Arial';const words=message.split(' ');let line='',y=760;for(const w of words){const test=line+w+' ';if(x.measureText(test).width>850){x.fillText(line,600,y);line=w+' ';y+=52}else line=test}x.fillText(line,600,y);x.fillStyle='#e8c78c';x.font='24px Arial';x.fillText('LIGHT • JOY • TOGETHERNESS',600,1300);const a=document.createElement('a');a.download='amwebtech-diwali-wish.png';a.href=c.toDataURL('image/png');a.click()}
+export default function Wishes(){
+ const [category,setCategory]=useState('All');const [copied,setCopied]=useState<number|null>(null)
+ const visible=useMemo(()=>category==='All'?wishes:wishes.filter(w=>w.category===category),[category])
+ const copy=async(id:number,msg:string)=>{try{await navigator.clipboard.writeText(msg);setCopied(id);window.setTimeout(()=>setCopied(null),1600)}catch{setCopied(null)}}
+ const share=(title:string,msg:string)=>{const text=`${title} — ${msg} | AM Webtech`;window.open(`https://wa.me/?text=${encodeURIComponent(text)}`,'_blank','noopener,noreferrer')}
+ return <div className="inner-page wishes-page"><PageIntro eyebrow="WORDS THAT SPARKLE" title={<>A wish for every<br/><em>kind of wonderful.</em></>} description="A collection of festive notes for the people, partnerships and possibilities that make life brighter. Pick one, make it yours and share the light."/>
+  <div className="filter-row" role="group" aria-label="Filter wishes">{categories.map(c=><button key={c} className={`filter-chip ${category===c?'active':''}`} onClick={()=>setCategory(c)}>{c}</button>)}</div>
+  <div className="wishes-grid">{visible.map(w=><article className={`wish-card tone-${w.tone}`} key={w.id}><div className="wish-card-top"><span className="wish-category">{w.category}</span><Sparkles size={18}/></div><div className="wish-mandala">✺</div><h2 className="display">{w.title}</h2><p>{w.message}</p><div className="wish-actions"><button onClick={()=>copy(w.id,w.message)}>{copied===w.id?<Check size={15}/>:<Copy size={15}/>} {copied===w.id?'Copied':'Copy'}</button><button onClick={()=>share(w.title,w.message)}><Share2 size={15}/> WhatsApp</button><button onClick={()=>downloadCard(w.title,w.message)} aria-label="Download greeting card"><Download size={15}/></button></div></article>)}</div>
+  <div className="wishes-bottom"><span className="eyebrow">A LITTLE NOTE FROM US</span><p>However you celebrate, may your days be bright and your moments meaningful.</p></div>
+ </div>
+}

@@ -1,0 +1,3 @@
+import Brand from './Brand'
+import { Heart, ArrowUpRight } from 'lucide-react'
+export default function Footer(){return <footer className="site-footer"><div className="footer-top"><Brand/><p>May your world be filled with light, possibility<br/>and beautiful new beginnings.</p><a href="https://amwebtech.com/" target="_blank" rel="noreferrer">Visit AM Webtech <ArrowUpRight size={15}/></a></div><div className="footer-bottom"><span>© {new Date().getFullYear()} AM Webtech. Celebrating together.</span><span>Made with <Heart size={12} fill="currentColor"/> and a little festive sparkle.</span></div></footer>}

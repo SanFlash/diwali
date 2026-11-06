@@ -1,21 +1,49 @@
-# RareForge Android — Collection Overdrive
+# AMWebtech — A Luminous Diwali
 
-RareForge is an independent, offline Android card-battle sandbox. It is not a modified Clash Royale client and never connects to Supercell services.
+A five-page, responsive Diwali celebration experience for AM Webtech, built with React, Vite, TypeScript, GSAP and Lenis.
 
-## Updated features
-- **432 unlocked cards**: 12 handcrafted original prototype units plus 420 generated original card entries.
-- **Unlimited local sandbox currency**: coins and gems are displayed as unlimited; this is an offline sandbox economy, not a change to any external game account.
-- **Persistent upgrades**: each card starts at Level 5, can be upgraded free up to Level 100, and its level is saved locally.
-- **Searchable collection**: search card names or roles, browse the full collection in pages, select any card, and inspect its boosted stats.
-- **Global boost controls**: raise or lower the HP/damage multiplier from 1.0× to 5.0×.
-- **Local battle simulation**: compares four-card teams using durability, damage rate, movement speed, level and boost.
-- **Offline-first**: no network permissions, no external account, no third-party game assets.
-- Creator credit: Satyendra Kumar Namdeo.
+## Brand direction
+The experience keeps AM Webtech's existing orange-and-blue brand character, translated into a royal midnight, champagne-gold and diya-amber festive palette. The official AM Webtech logo is loaded from the existing public brand asset in the AM Webtech experience repository, on a light plaque to preserve contrast against the dark festive header.
 
-## Build and install
-1. Open the repository in Android Studio and sync Gradle.
-2. Install Android SDK Platform 35 if prompted.
-3. Build with Build → Build APK(s). The debug APK is at app/build/outputs/apk/debug/app-debug.apk.
-4. Or open Actions → Build RareForge APK, run the workflow, and download the RareForge-debug-apk artifact from the successful run.
+## Pages
+- `/` — Cinematic home
+- `/story` — The meaning and spirit of Diwali
+- `/wishes` — Filterable greeting gallery with copy/share/download
+- `/celebrate` — Interactive diya, rangoli canvas, fireworks and personal wish generator
+- `/finale` — Grand closing celebration
 
-This is a standalone prototype and does not modify official game data, accounts, or servers.
+## Requirements
+- Node.js 20+
+- npm 10+
+
+## Local development
+```bash
+npm install
+npm run dev
+```
+Open http://localhost:5173.
+
+## Production build
+```bash
+npm run build
+npm run preview
+```
+
+## Deploy to Vercel
+1. Push this project to a Git repository.
+2. Import the repository into Vercel.
+3. Framework preset: Vite.
+4. Build command: `npm run build`.
+5. Output directory: `dist`.
+6. Deploy. `vercel.json` includes SPA route rewrites so direct navigation to all five routes works.
+
+No environment variables or backend are required for the current feature set.
+
+## Brand asset
+The header and footer use the official AM Webtech logo from the existing public brand asset in `SanFlash/amwebtech-experience`. The lockup links to https://amwebtech.com. If the logo is moved to a local asset, update the image source in `src/components/Brand.tsx`; do not substitute an unofficial logo.
+
+## Notes
+- Sound is optional and synthesized in-browser only after the visitor opts in; no autoplay.
+- The fireworks and rangoli are drawn on canvas.
+- Reduced-motion preferences are respected.
+- Greeting download is generated locally in the browser.
