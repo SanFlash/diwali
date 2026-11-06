@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom'
 import { useState } from 'react'
 import { Menu, X, Volume2, VolumeX } from 'lucide-react'
 import Brand from './Brand'
-const links=[['Home','/'],['The Story','/story'],['Wishes','/wishes'],['Celebrate','/celebrate'],['Finale','/finale'],['Playground','/playground']]
+const links=[['Home','/'],['The Story','/story'],['Wishes','/wishes'],['Celebrate','/celebrate'],['Finale','/finale'],['Playground','/playground'],['Arrow Arena','/arrow-arena']]
 export default function Navbar({sound,setSound}:{sound:boolean;setSound:(v:boolean)=>void}) {
  const [open,setOpen]=useState(false)
  return <header className="site-header">
