@@ -32,6 +32,7 @@ export default function Home(){
    <div className="brand-message-copy"><span className="eyebrow">A NOTE FROM AM WEBTECH</span><h2 className="display">Progress is brighter <em>when we shine together.</em></h2><p>To our colleagues, clients, partners and friends — thank you for being part of our journey. May the season bring renewed energy, meaningful connections and success worth sharing.</p><Link to="/story" className="text-link">Discover the Diwali story <ArrowRight size={16}/></Link></div>
   </section>
   <FestivalShowcase/>
+  <section className="playground-promo"><div className="promo-orb promo-orb-one"/><div className="promo-orb promo-orb-two"/><span className="eyebrow">YOUR FESTIVAL. YOUR MAGIC.</span><h2 className="display">Step into the <em>Diwali Playground.</em></h2><p>Light a garden of diyas, create a wish for someone you love, explore colours and take the festive quiz.</p><Link to="/playground" className="button button-gold">Enter the playground <Sparkles size={16}/></Link></section>
   <section className="home-cta section-pad"><span className="eyebrow">MAKE THIS MOMENT YOURS</span><h2 className="display">Ready to add a little <em>more light?</em></h2><p>Light a diya, create a wish and send a little Diwali magic into the world.</p><Link to="/celebrate" className="button button-gold">Celebrate with us <Sparkles size={16}/></Link></section>
  </div>
 }

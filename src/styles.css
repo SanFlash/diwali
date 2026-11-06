@@ -47,3 +47,77 @@
 @media(max-width:900px){.showcase-grid{gap:12px}.showcase-card{padding:22px;min-height:320px}.showcase-card h3{font-size:29px}}
 @media(max-width:680px){.festival-universe{opacity:.36}.back-to-top{right:15px;bottom:15px;width:40px;height:40px}.festival-showcase{padding:68px 20px 78px}.showcase-heading{margin-bottom:30px}.showcase-heading h2{font-size:48px}.showcase-grid{grid-template-columns:1fr}.showcase-card{min-height:270px}.showcase-card-art{height:110px}.showcase-orbit{width:105px;height:105px}.showcase-symbol{font-size:48px}}
 @media(prefers-reduced-motion:reduce){.festival-universe{display:none}.showcase-orbit{animation:none!important}}
+
+/* THE DIWALI PLAYGROUND — interactive festival studio */
+.playground-page{position:relative;isolation:isolate;overflow:hidden;--play-accent:#f2c777;--play-glow:rgba(242,199,119,.2)}
+.playground-backdrop{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.playground-decor{position:absolute;right:-7%;top:190px;font-size:360px;line-height:1;color:var(--play-accent);opacity:.045}
+.playground-star{position:absolute;color:var(--play-accent);font-size:26px;text-shadow:0 0 22px var(--play-glow)}
+.star-one{top:22%;left:5%}.star-two{top:53%;right:5%;font-size:38px}.star-three{bottom:12%;left:9%}
+.playground-panel{position:relative;margin:0 auto 28px;padding:38px;border:1px solid color-mix(in srgb,var(--play-accent) 28%,transparent);background:linear-gradient(145deg,rgba(25,25,48,.84),rgba(10,13,30,.88));box-shadow:0 22px 70px rgba(0,0,0,.18);overflow:hidden}
+.playground-panel:before{content:"";position:absolute;width:320px;height:320px;right:-180px;top:-210px;border-radius:50%;background:radial-gradient(circle,var(--play-glow),transparent 70%);pointer-events:none}
+.playground-panel-heading{max-width:720px;margin-bottom:28px;position:relative}
+.playground-panel-heading .eyebrow{color:var(--play-accent)}
+.playground-panel-heading h2{font-size:clamp(38px,5vw,58px);margin:15px 0}
+.playground-panel-heading p{color:#bdb6b5;font-size:12px;line-height:1.8;margin:0}
+.palette-options{display:flex;gap:12px;flex-wrap:wrap}
+.palette-swatch{display:flex;align-items:center;gap:10px;padding:12px 15px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.09);color:#d8d0c8;cursor:pointer;font-size:10px;transition:.25s}
+.palette-swatch span{width:19px;height:19px;border-radius:50%;background:var(--swatch);box-shadow:0 0 17px var(--swatch)}
+.palette-swatch.selected{border-color:var(--swatch);background:color-mix(in srgb,var(--swatch) 12%,transparent);color:#fff}
+.palette-swatch svg{color:var(--swatch)}
+.diya-garden{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px;padding:25px 15px;background:radial-gradient(ellipse at center,var(--play-glow),transparent 68%);border:1px solid rgba(255,255,255,.06)}
+.garden-diya{height:85px;display:flex;align-items:center;justify-content:flex-end;flex-direction:column;gap:0;background:transparent;border:0;cursor:pointer;position:relative;transition:transform .25s}
+.garden-diya:hover{transform:translateY(-6px) scale(1.08)}
+.garden-flame{width:15px;height:28px;margin-bottom:-3px;border-radius:80% 10% 70% 70%;transform:rotate(45deg) scale(.3);opacity:0;background:radial-gradient(ellipse at 35% 35%,#fff8c8 0 15%,#ffd26d 38%,#ff7b34 75%);filter:drop-shadow(0 0 12px #ffb64e);transition:all .3s}
+.garden-diya.lit .garden-flame{opacity:1;transform:rotate(45deg) scale(1);animation:play-flame .8s ease-in-out infinite alternate}
+.garden-bowl{width:54px;height:27px;position:relative;border-radius:10% 10% 48% 48%;background:linear-gradient(180deg,#f4c778,#a94f2b 72%,#54251f);border:1px solid #f5d38d;box-shadow:inset 0 5px 7px rgba(255,240,190,.32)}
+.garden-bowl:before{content:"";position:absolute;left:-2px;right:-2px;top:-4px;height:8px;border-radius:50%;background:linear-gradient(90deg,#8c482b,#ffdb91,#a75a32)}
+.garden-bowl i{position:absolute;left:50%;top:4px;width:7px;height:7px;border-radius:50%;background:#ffdc8c;transform:translateX(-50%);opacity:0}
+.garden-diya.lit .garden-bowl{box-shadow:0 0 28px var(--play-glow),inset 0 5px 7px rgba(255,240,190,.35)}
+.garden-diya.lit .garden-bowl i{opacity:1}
+.garden-progress{margin-top:22px}
+.garden-progress-copy{display:flex;justify-content:space-between;gap:10px;color:#dcd2c4;font-size:11px;margin-bottom:10px}
+.garden-progress-copy span{color:#a9a0a0}
+.garden-track{height:7px;border-radius:10px;background:rgba(255,255,255,.08);overflow:hidden}
+.garden-track span{display:block;height:100%;border-radius:10px;background:linear-gradient(90deg,var(--play-accent),#f6d69b);box-shadow:0 0 18px var(--play-glow);transition:width .4s ease}
+.text-button{display:inline-flex;align-items:center;gap:8px;margin-top:15px;border:0;background:transparent;color:var(--play-accent);font-size:10px;cursor:pointer}
+.wish-wall-form{display:grid;grid-template-columns:1fr auto;gap:10px;margin-bottom:20px}
+.wish-wall-form input,.wish-wall-form textarea{width:100%;background:rgba(3,6,18,.6);border:1px solid rgba(255,255,255,.13);padding:13px 15px;color:#f8edda;outline:none;font:inherit;font-size:11px}
+.wish-wall-form textarea{grid-column:1/-1;min-height:88px;resize:vertical}
+.wish-wall-form input:focus,.wish-wall-form textarea:focus{border-color:var(--play-accent)}
+.wish-wall-form .button{grid-column:1/-1;justify-self:start}
+.wish-wall-form .button:disabled{opacity:.45;cursor:not-allowed}
+.wish-wall-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.wish-wall-note{display:flex;align-items:flex-start;gap:12px;padding:15px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);animation:note-arrive .45s ease both}
+.wish-wall-note span{color:var(--play-accent);font-size:16px}
+.wish-wall-note p{margin:0;color:#ded5c9;font-family:'Cormorant Garamond',serif;font-size:18px;line-height:1.35}
+.blessing-card{max-width:800px;margin:auto;text-align:center;padding:35px 25px;border:1px solid color-mix(in srgb,var(--play-accent) 30%,transparent);background:radial-gradient(ellipse at center,var(--play-glow),transparent 70%),rgba(4,7,18,.5)}
+.blessing-star{font-size:38px;color:var(--play-accent);text-shadow:0 0 20px var(--play-glow)}
+.blessing-card p{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,4vw,39px);color:#f3e3c5;line-height:1.3;max-width:650px;margin:16px auto 24px}
+.blessing-card>div{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.quiz-card{max-width:760px;margin:auto;padding:28px;border:1px solid rgba(255,255,255,.1);background:rgba(4,7,18,.42)}
+.quiz-progress{color:var(--play-accent);font-size:9px;letter-spacing:.18em}
+.quiz-card h3{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:500;color:#f4e6cd;margin:16px 0 22px}
+.quiz-options{display:grid;gap:9px}
+.quiz-options button{text-align:left;padding:13px 15px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.1);color:#d9d0c5;font-size:11px;cursor:pointer;transition:.2s}
+.quiz-options button:hover:not(:disabled){border-color:var(--play-accent);background:var(--play-glow)}
+.quiz-options button.correct{border-color:#77c89b;background:rgba(79,169,116,.13);color:#b7f0ce}
+.quiz-options button.incorrect{border-color:#d77b7b;background:rgba(200,80,80,.12);color:#f0b5b5}
+.quiz-feedback{margin-top:17px;display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.quiz-feedback p{font-size:11px;line-height:1.7;color:#c4bcb4;flex:1;min-width:180px}
+.quiz-result{text-align:center;padding:30px;color:var(--play-accent);background:var(--play-glow)}
+.quiz-result strong{display:block;font-family:'Cormorant Garamond',serif;font-size:56px;color:#f6dfb7;margin:8px}
+.quiz-result p{color:#c8beb5;font-size:12px;margin-bottom:22px}
+.playground-signoff{text-align:center;padding:38px 15px 10px;color:var(--play-accent)}
+.playground-signoff p{font-family:'Cormorant Garamond',serif;font-size:25px;color:#e7d8bf;margin:12px auto}
+.playground-signoff span{font-size:8px;letter-spacing:.22em;color:#a89b8b}
+.playground-promo{max-width:1100px;margin:25px auto 80px;padding:70px 30px;text-align:center;position:relative;overflow:hidden;border:1px solid rgba(231,194,125,.25);background:radial-gradient(ellipse at 50% 0%,rgba(150,85,112,.25),transparent 65%),linear-gradient(145deg,#17182e,#0c1022)}
+.playground-promo .eyebrow,.playground-promo h2,.playground-promo p,.playground-promo .button{position:relative;z-index:1}
+.playground-promo h2{font-size:clamp(45px,6vw,72px);margin:20px auto}
+.playground-promo p{max-width:580px;margin:0 auto 25px;color:#c1b8b4;font-size:13px;line-height:1.9}
+.promo-orb{position:absolute;width:280px;height:280px;border:1px solid rgba(232,190,120,.15);border-radius:50%;animation:slow-spin 45s linear infinite}
+.promo-orb-one{left:-160px;top:-160px}.promo-orb-two{right:-160px;bottom:-180px;animation-direction:reverse}
+@keyframes play-flame{from{filter:drop-shadow(0 0 7px #ffb64e);transform:rotate(42deg) scale(.94)}to{filter:drop-shadow(0 0 18px #ffb64e);transform:rotate(48deg) scale(1.07)}}
+@keyframes note-arrive{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:680px){.playground-panel{padding:24px 17px;margin-bottom:18px}.palette-options{display:grid;grid-template-columns:1fr 1fr}.palette-swatch{padding:10px 8px;font-size:9px}.diya-garden{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:20px 8px}.garden-diya{height:76px}.garden-progress-copy{flex-direction:column;gap:4px}.wish-wall-form{grid-template-columns:1fr}.wish-wall-form textarea{grid-column:auto}.wish-wall-form .button{grid-column:auto;width:100%}.wish-wall-list{grid-template-columns:1fr}.blessing-card{padding:25px 15px}.blessing-card>div{flex-direction:column}.blessing-card .button{width:100%}.quiz-card{padding:20px 15px}.quiz-card h3{font-size:26px}.quiz-feedback{align-items:stretch}.quiz-feedback .button{width:100%}.playground-promo{margin:10px 20px 55px;padding:52px 18px}.playground-promo h2{font-size:46px}}
+@media(prefers-reduced-motion:reduce){.playground-decor,.playground-star,.promo-orb{animation:none!important}.garden-diya.lit .garden-flame{animation:none!important}}

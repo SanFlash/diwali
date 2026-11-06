@@ -13,6 +13,7 @@ import Story from './pages/Story'
 import Wishes from './pages/Wishes'
 import Celebrate from './pages/Celebrate'
 import Finale from './pages/Finale'
+import FestivalPlayground from './pages/FestivalPlayground'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -25,6 +26,7 @@ function AnimatedRoutes({sound,setSound}:{sound:boolean;setSound:(v:boolean)=>vo
       <Route path="wishes" element={<Wishes/>}/>
       <Route path="celebrate" element={<Celebrate/>}/>
       <Route path="finale" element={<Finale/>}/>
+      <Route path="playground" element={<FestivalPlayground/>}/>
     </Route>
   </Routes></motion.div></AnimatePresence>
 }
